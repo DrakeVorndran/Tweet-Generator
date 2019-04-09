@@ -33,8 +33,15 @@ def list_of_counts(string):
   counts_list = counts_dict.items()
   return counts_list
 
+def frequency(word, histogram):
+  return histogram[word]
+
+def unique_words(histogram):
+  return len(histogram.keys())
 
 
 if __name__ == '__main__':
   book = open('book.txt', 'r').read()
-  pprint(list_of_counts(book))
+  histogram = dict_histogram(book)
+  pprint(histogram)
+  print(unique_words(histogram))
