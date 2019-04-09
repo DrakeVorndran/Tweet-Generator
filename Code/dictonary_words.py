@@ -8,5 +8,7 @@ def random_words(num):
   for i in range(num):
     return_list.append(words_list[random.randint(0, len(words_list) - 1)])
   return return_list
+
+
 if __name__ == '__main__':
-  print(random_words(int(sys.argv[1])))
+  print(*random_words(int(sys.argv[1])))
