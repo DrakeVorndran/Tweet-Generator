@@ -6,6 +6,7 @@ from linkedlist import LinkedList
 class HashTable(object):
 
     def __init__(self, init_size=8):
+        self.curr_length = 0
         """Initialize this hash table with the given initial size."""
         # Create a new list (used as fixed-size array) of empty linked lists
         self.buckets = [LinkedList() for _ in range(init_size)]
@@ -59,11 +60,7 @@ class HashTable(object):
         TODO: Running time: O(???) Why and under what conditions?"""
         # TODO: Loop through all buckets
         # TODO: Count number of key-value entries in each bucket
-        count = 0
-        for bucket in self.buckets:
-            for _, _ in bucket.items():
-                count += 1
-        return count
+        return self.curr_length
 
     def contains(self, key):
         """Return True if this hash table contains the given key, or False.
@@ -104,8 +101,10 @@ class HashTable(object):
                 if key_val == key:
                     old_val = index_val
         if old_val:
+            self.curr_length -= 1
             bucket.delete((key, old_val))
         bucket.append((key, value))
+        self.curr_length += 1
 
         # index = bucket.find(lambda list_key: list_key == key)
         # print (index)
@@ -132,6 +131,7 @@ class HashTable(object):
                     old_val = index_val
         if old_val:
             bucket.delete((key, old_val))
+            self.curr_length -= 1
         else:
             raise KeyError('Key not found: {}'.format(key))
 
