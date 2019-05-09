@@ -93,6 +93,7 @@ class LinkedList(object):
             if(quality(node.data)):
                 return node.data # can end before end of list
             node = node.next
+        return None # nothing satisfied quality
 
     def delete(self, item):
         """Delete the given item from this linked list, or raise ValueError.
