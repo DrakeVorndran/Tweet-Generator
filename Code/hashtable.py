@@ -157,6 +157,5 @@ def test_hash_table():
         print('contains(X): {}'.format(ht.contains('X')))
         print('length: {}'.format(ht.length()))
 
-
 if __name__ == '__main__':
     test_hash_table()

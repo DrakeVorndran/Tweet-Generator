@@ -36,6 +36,10 @@ def make_pairs(corpus, order):
   return output
 
 if __name__ == '__main__':
-  chain = gen_markov("one fish two fish red fish blue fish blue", 2)
+  corpus = open('ready_player_one.txt')
+  text = ''
+  for line in corpus:
+    text +=line[:-1]+' '
+  chain = gen_markov(text, 2)
   pprint(chain)
   print(gen_sentence(chain, 10))
